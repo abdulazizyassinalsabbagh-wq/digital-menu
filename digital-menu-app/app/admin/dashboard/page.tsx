@@ -290,7 +290,7 @@ export default function Dashboard() {
                       <p className="mt-1 text-sm text-gray-500">{item.description}</p>
                     )}
                     <div className="mt-2 flex items-center space-x-4 text-sm">
-                      <span className="font-medium text-gray-900">${item.price.toFixed(2)}</span>
+                      <span className="font-medium text-gray-900">€{item.price.toFixed(2)}</span>
                       <span className="text-gray-500">{getCategoryName(item.category_id)}</span>
                     </div>
                   </div>
