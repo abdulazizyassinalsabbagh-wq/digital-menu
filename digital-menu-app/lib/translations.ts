@@ -66,6 +66,19 @@ export const translations = {
     restaurantName: 'Restaurant Name',
     password: 'Password',
     loginButton: 'Login',
+
+    // Analytics
+    analytics: 'Analytics',
+    totalViews: 'Total Views',
+    viewsToday: "Today's Views",
+    viewsThisWeek: 'This Week',
+    viewsThisMonth: 'This Month',
+    viewsLast7Days: 'Views - Last 7 Days',
+    peakHours: 'Peak Hours',
+    aboutAnalytics: 'About Analytics',
+    analyticsInfo1: 'Every time someone scans your QR code and views your menu, it gets tracked here',
+    analyticsInfo2: 'Use this data to understand when your menu is most viewed',
+    analyticsInfo3: 'Analytics help you make better decisions about when to promote special items',
   },
   de: {
     // Customer Menu
@@ -134,6 +147,19 @@ export const translations = {
     restaurantName: 'Restaurantname',
     password: 'Passwort',
     loginButton: 'Anmelden',
+
+    // Analytics
+    analytics: 'Statistiken',
+    totalViews: 'Gesamtaufrufe',
+    viewsToday: 'Heutige Aufrufe',
+    viewsThisWeek: 'Diese Woche',
+    viewsThisMonth: 'Dieser Monat',
+    viewsLast7Days: 'Aufrufe - Letzte 7 Tage',
+    peakHours: 'Stoßzeiten',
+    aboutAnalytics: 'Über Statistiken',
+    analyticsInfo1: 'Jedes Mal, wenn jemand Ihren QR-Code scannt und Ihre Speisekarte ansieht, wird es hier erfasst',
+    analyticsInfo2: 'Nutzen Sie diese Daten, um zu verstehen, wann Ihre Speisekarte am häufigsten angesehen wird',
+    analyticsInfo3: 'Statistiken helfen Ihnen, bessere Entscheidungen zu treffen, wann Sie spezielle Gerichte bewerben',
   },
 };
 

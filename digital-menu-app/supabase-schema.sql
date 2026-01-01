@@ -53,3 +53,28 @@ CREATE POLICY "Allow public read access to categories" ON categories
 
 CREATE POLICY "Allow public read access to menu items" ON menu_items
   FOR SELECT USING (true);
+
+-- Analytics table for tracking QR scans and menu views
+CREATE TABLE analytics_events (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  restaurant_id UUID REFERENCES restaurants(id) ON DELETE CASCADE,
+  event_type TEXT NOT NULL, -- 'qr_scan', 'menu_view', 'item_added'
+  event_data JSONB, -- Additional data like item_id, user_agent, etc.
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Index for analytics queries
+CREATE INDEX idx_analytics_restaurant ON analytics_events(restaurant_id);
+CREATE INDEX idx_analytics_created_at ON analytics_events(created_at);
+CREATE INDEX idx_analytics_event_type ON analytics_events(event_type);
+
+-- Enable RLS for analytics
+ALTER TABLE analytics_events ENABLE ROW LEVEL SECURITY;
+
+-- Allow public insert for tracking (customers can track their visits)
+CREATE POLICY "Allow public insert to analytics" ON analytics_events
+  FOR INSERT WITH CHECK (true);
+
+-- Allow restaurant owners to read their own analytics
+CREATE POLICY "Allow public read access to analytics" ON analytics_events
+  FOR SELECT USING (true);

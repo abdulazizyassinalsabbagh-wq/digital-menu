@@ -59,6 +59,12 @@ function DashboardContent({
                 {t('categories')}
               </Link>
               <Link
+                href="/admin/dashboard/analytics"
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+              >
+                {t('analytics')}
+              </Link>
+              <Link
                 href="/admin/dashboard/qr-code"
                 className="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
               >

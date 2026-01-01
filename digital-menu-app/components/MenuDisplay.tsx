@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from './LanguageProvider';
 import LanguageSwitcher from './LanguageSwitcher';
+import { supabase } from '@/lib/supabase';
 
 interface MenuItem {
   id: string;
@@ -39,6 +40,26 @@ export default function MenuDisplay({ restaurant, categories, menuItems }: MenuD
   const { t } = useLanguage();
   const [orderList, setOrderList] = useState<OrderItem[]>([]);
   const [showOrderList, setShowOrderList] = useState(false);
+
+  // Track menu view when component mounts
+  useEffect(() => {
+    const trackMenuView = async () => {
+      try {
+        await supabase.from('analytics_events').insert({
+          restaurant_id: restaurant.id,
+          event_type: 'menu_view',
+          event_data: {
+            user_agent: navigator.userAgent,
+            timestamp: new Date().toISOString(),
+          },
+        });
+      } catch (error) {
+        console.error('Analytics tracking error:', error);
+      }
+    };
+
+    trackMenuView();
+  }, [restaurant.id]);
 
   // Group menu items by category
   const itemsByCategory = menuItems.reduce((acc, item) => {
